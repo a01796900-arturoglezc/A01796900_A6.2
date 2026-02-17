@@ -93,3 +93,24 @@ class HotelService:
 
         print("Error: Hotel not found.")
 
+
+    @staticmethod
+    def reserve_room(hotel_id: str) -> None:
+        """Reserve a room in a hotel."""
+        hotels_data = FileService.load_data(DATA_FILE)
+
+        for hotel in hotels_data:
+            if hotel["hotel_id"] == hotel_id:
+
+                if hotel["available_rooms"] <= 0:
+                    print("Error: No rooms available.")
+                    return
+
+                hotel["available_rooms"] -= 1
+                FileService.save_data(DATA_FILE, hotels_data)
+                print("Room reserved successfully.")
+                return
+
+        print("Error: Hotel not found.")
+
+
