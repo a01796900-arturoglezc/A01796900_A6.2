@@ -47,3 +47,20 @@ class HotelService:
         """Return all hotels."""
         hotels_data = FileService.load_data(DATA_FILE)
         return [Hotel.from_dict(h) for h in hotels_data]
+    
+    @staticmethod
+    def delete_hotel(hotel_id: str) -> None:
+        """Delete a hotel by ID."""
+        hotels_data = FileService.load_data(DATA_FILE)
+
+        updated_hotels = [
+            hotel for hotel in hotels_data
+            if hotel["hotel_id"] != hotel_id
+        ]
+
+        if len(updated_hotels) == len(hotels_data):
+            print("Error: Hotel not found.")
+            return
+
+        FileService.save_data(DATA_FILE, updated_hotels)
+        print("Hotel deleted successfully.")
