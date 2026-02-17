@@ -64,3 +64,32 @@ class HotelService:
 
         FileService.save_data(DATA_FILE, updated_hotels)
         print("Hotel deleted successfully.")
+
+    @staticmethod
+    def modify_hotel(
+        hotel_id: str,
+        name: str = None,
+        location: str = None,
+        total_rooms: int = None,
+        available_rooms: int = None,
+    ) -> None:
+        """Modify hotel information."""
+        hotels_data = FileService.load_data(DATA_FILE)
+
+        for hotel in hotels_data:
+            if hotel["hotel_id"] == hotel_id:
+                if name is not None:
+                    hotel["name"] = name
+                if location is not None:
+                    hotel["location"] = location
+                if total_rooms is not None:
+                    hotel["total_rooms"] = total_rooms
+                if available_rooms is not None:
+                    hotel["available_rooms"] = available_rooms
+
+                FileService.save_data(DATA_FILE, hotels_data)
+                print("Hotel updated successfully.")
+                return
+
+        print("Error: Hotel not found.")
+
