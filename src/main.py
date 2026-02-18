@@ -77,7 +77,38 @@ def test_customer_service():
 
     print("Final customers:", CustomerService.display_customers())
 
+from src.models.reservation import Reservation
+from src.services.reservation_service import ReservationService
+
+def test_reservation_service():
+    print("\n===== RESERVATION SERVICE TESTS =====")
+
+    # Setup required entities
+    hotel = Hotel("H2", "Beach Hotel", "Cancun", 2, 2)
+    HotelService.create_hotel(hotel)
+
+    customer = Customer("C2", "Alice", "alice@email.com", "5551234")
+    CustomerService.create_customer(customer)
+
+    # Create reservation
+    reservation = Reservation("R1", "C2", "H2", 101)
+    ReservationService.create_reservation(reservation)
+
+    # Duplicate reservation (negative case)
+    ReservationService.create_reservation(reservation)
+
+    # Non-existing customer (negative)
+    bad_res = Reservation("R2", "C999", "H2", 102)
+    ReservationService.create_reservation(bad_res)
+
+    # Non-existing hotel (negative)
+    bad_res2 = Reservation("R3", "C2", "H999", 103)
+    ReservationService.create_reservation(bad_res2)
+
+    print("Reservations:", ReservationService.display_reservations())
 
 if __name__ == "__main__":
     test_hotel_service()
     test_customer_service()
+    test_reservation_service()
+

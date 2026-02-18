@@ -1,1 +1,8 @@
-[]
+[
+    {
+        "customer_id": "C2",
+        "name": "Alice",
+        "email": "alice@email.com",
+        "phone": "5551234"
+    }
+]
