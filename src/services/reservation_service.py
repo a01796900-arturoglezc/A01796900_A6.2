@@ -60,3 +60,30 @@ class ReservationService:
         """Return all reservations."""
         reservations_data = FileService.load_data(DATA_FILE)
         return [Reservation.from_dict(r) for r in reservations_data]
+
+    @staticmethod
+    def cancel_reservation(reservation_id: str) -> None:
+        """Cancel a reservation and release hotel room."""
+
+        reservations_data = FileService.load_data(DATA_FILE)
+
+        for reservation in reservations_data:
+            if reservation["reservation_id"] == reservation_id:
+
+                hotel_id = reservation["hotel_id"]
+
+                # Remove reservation
+                updated_reservations = [
+                    r for r in reservations_data
+                    if r["reservation_id"] != reservation_id
+                ]
+
+                FileService.save_data(DATA_FILE, updated_reservations)
+
+                # Release room in hotel
+                HotelService.cancel_room(hotel_id)
+
+                print("Reservation cancelled successfully.")
+                return
+
+        print("Error: Reservation not found.")

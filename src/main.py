@@ -107,6 +107,16 @@ def test_reservation_service():
 
     print("Reservations:", ReservationService.display_reservations())
 
+    # Cancel existing reservation
+    ReservationService.cancel_reservation("R1")
+
+    # Cancel non-existing reservation (negative case)
+    ReservationService.cancel_reservation("R999")
+
+    print("Reservations after cancel:",
+          ReservationService.display_reservations())
+
+
 if __name__ == "__main__":
     test_hotel_service()
     test_customer_service()
