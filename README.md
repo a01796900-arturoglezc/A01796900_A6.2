@@ -7,6 +7,8 @@ Se desarrolló un sistema de reservaciones en Python con arquitectura modular (m
 
 El proyecto cumple con el estándar PEP-8 y fue validado con flake8 y pylint (10/10).
 
+Fue realizado en tres PRs, favor de revisar la trazabilidad en: https://github.com/a01796900-arturoglezc/A01796900_A6.2/pulls?q=is%3Apr+is%3Aclosed
+
 ---
 
 ## Requisitos
