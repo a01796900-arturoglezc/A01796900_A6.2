@@ -8,6 +8,7 @@ from typing import Dict
 class Hotel:
     """Represents a hotel entity."""
 
+    # pylint: disable=too-many-arguments, too-many-positional-arguments
     def __init__(
         self,
         hotel_id: str,

@@ -47,7 +47,7 @@ class HotelService:
         """Return all hotels."""
         hotels_data = FileService.load_data(DATA_FILE)
         return [Hotel.from_dict(h) for h in hotels_data]
-    
+
     @staticmethod
     def delete_hotel(hotel_id: str) -> None:
         """Delete a hotel by ID."""
@@ -93,7 +93,6 @@ class HotelService:
 
         print("Error: Hotel not found.")
 
-
     @staticmethod
     def reserve_room(hotel_id: str) -> None:
         """Reserve a room in a hotel."""
@@ -112,7 +111,6 @@ class HotelService:
                 return
 
         print("Error: Hotel not found.")
-
 
     @staticmethod
     def cancel_room(hotel_id: str) -> None:

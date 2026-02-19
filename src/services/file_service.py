@@ -21,8 +21,8 @@ class FileService:
         except json.JSONDecodeError:
             print(f"Error: Invalid JSON format in {file_path}.")
             return []
-        except Exception as error:
-            print(f"Unexpected error while reading {file_path}: {error}")
+        except OSError as error:
+            print(f"OS error while reading {file_path}: {error}")
             return []
 
     @staticmethod
@@ -31,5 +31,5 @@ class FileService:
         try:
             with open(file_path, "w", encoding="utf-8") as file:
                 json.dump(data, file, indent=4)
-        except Exception as error:
-            print(f"Error writing to {file_path}: {error}")
+        except OSError as error:
+            print(f"OS error writing to {file_path}: {error}")
