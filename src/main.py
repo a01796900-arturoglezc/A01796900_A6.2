@@ -4,6 +4,8 @@ Manual test execution for Reservation System.
 
 from src.models.hotel import Hotel
 from src.models.customer import Customer
+from src.models.reservation import Reservation
+from src.services.reservation_service import ReservationService
 from src.services.hotel_service import HotelService
 from src.services.customer_service import CustomerService
 
@@ -77,8 +79,6 @@ def test_customer_service():
 
     print("Final customers:", CustomerService.display_customers())
 
-from src.models.reservation import Reservation
-from src.services.reservation_service import ReservationService
 
 def test_reservation_service():
     print("\n===== RESERVATION SERVICE TESTS =====")
@@ -121,4 +121,3 @@ if __name__ == "__main__":
     test_hotel_service()
     test_customer_service()
     test_reservation_service()
-
