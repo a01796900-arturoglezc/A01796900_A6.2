@@ -11,6 +11,7 @@ from src.services.customer_service import CustomerService
 
 
 def test_hotel_service():
+    """Execute manual tests for hotel service."""
     print("\n===== HOTEL SERVICE TESTS =====")
 
     # Create hotel
@@ -53,6 +54,7 @@ def test_hotel_service():
 
 
 def test_customer_service():
+    """Execute manual tests for customer service."""
     print("\n===== CUSTOMER SERVICE TESTS =====")
 
     # Create customer
@@ -81,6 +83,7 @@ def test_customer_service():
 
 
 def test_reservation_service():
+    """Execute manual tests for reservation service."""
     print("\n===== RESERVATION SERVICE TESTS =====")
 
     # Setup required entities
